@@ -5,28 +5,28 @@ class Counter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            number: 0
+            number: 0,
+            groupSize: props.groupSize
         }
     }
 
-    // static getDerivedStateFromProps(props, state) {
-    //     if (props.number !== state.number) {
-    //         return {
-    //             number: props.number,
-    //             CounterNum: props.number
-    //         }
-    //     }
-    //     return null;
+    static getDerivedStateFromProps(props, state) {
+        if (props.groupSize !== state.groupSize) {
+            return {
+                number: 0,
+                groupSize: props.groupSize
+            }
+        }
+        return null;
+    }
+
+    // componentWillReceiveProps(props, state){
+    //     this.setState({
+    //         number: props.value
+    //     })
     // }
 
 
-    static getDerivedStateFromProps(props, nextProps){
-        if (props.value !== nextProps.value) {
-            return {
-                number: 0
-            };
-        }
-    }
 
 
     increase = () => {
@@ -42,6 +42,7 @@ class Counter extends React.Component {
     }
 
     decrease = () => {
+        console.log("decrease")
         this.setState({
             number: this.state.number - 1
         }, this.changeCounter)

@@ -16,34 +16,33 @@ class CounterGroup extends React.Component {
     onChangeHandle = (event) => {
         this.setState({
             groupSize: parseInt(event.target.value),
-            counterInfo: new Array(parseInt(event.target.value)).fill(0),
             counters:0
         });
-    }
-    handleChange = (value, id) => {
-        let temp = this.state.counterInfo
-        temp[id] = value
-        this.calculateNumbers(temp);
+        this.props.reset()
     }
 
-    calculateNumbers = (numberCount) => {
-        let result = 0
-        for (let i of numberCount) {
-            result += i
-        }
-        this.setState({
-            counters: result
-        })
+
+    addCounters = () =>{
+        this.props.increase()
     }
+
+    reduceCounters = () =>{
+        this.props.decrease()
+    }
+
+
 
     render() {
         return (<div>
             <label>numbers of counters:</label>
             <input value={this.state.groupSize} onChange={this.onChangeHandle}/>
-            <label>total:{this.state.counters}</label>
-            <div>{this.state.counterInfo.map((value, id) => <Counter groupSize={this.state.groupSize}  key={id} handleChange={(value) => {
-                this.handleChange(value, id)
-            }}/>)}</div>
+            <label>total:{this.props.total}</label>
+            <div>{new Array(this.state.groupSize).fill(0).map((value, id) => <Counter groupSize={this.state.groupSize}
+                                                                     addCounters={this.addCounters}
+                                                                     reduceCounters={this.reduceCounters}
+                                                                     key={id} />)}
+
+            </div>
         </div>)
     }
 }

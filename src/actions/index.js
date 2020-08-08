@@ -16,6 +16,6 @@ export const decrease = () => {
 }
 export const reset = () => {
     return {
-        type: 'RESET'
+        type: 'RESET_TOTAL'
     }
 }

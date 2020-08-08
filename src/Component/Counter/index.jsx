@@ -21,29 +21,20 @@ class Counter extends React.Component {
         return null;
     }
 
-    // componentWillReceiveProps(props, state){
-    //     this.setState({
-    //         number: props.value
-    //     })
-    // }
-
-
     increase = () => {
-        this.setState({
-            number: this.state.number + 1
-        }, this.changeCounter)
+        this.props.addCounters()
+        this.setState(preState => ({
+            number: preState.number + 1
+        }))
 
     }
 
-    changeCounter = () => {
-        this.props.handleChange(this.state.number)
-    }
 
     decrease = () => {
-        console.log("decrease")
-        this.setState({
-            number: this.state.number - 1
-        }, this.changeCounter)
+        this.props.reduceCounters()
+        this.setState(preState => ({
+            number: preState.number - 1
+        }))
     }
 
     getNumber(number) {

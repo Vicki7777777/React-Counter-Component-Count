@@ -37,7 +37,6 @@ class Counter extends React.Component {
 
     changeCounter = () => {
         this.props.handleChange(this.state.number)
-        // (value)=>{this.handleChange(value,id)}
     }
 
     decrease = () => {

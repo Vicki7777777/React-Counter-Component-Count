@@ -14,7 +14,7 @@ export const decrease = () => {
         type: 'DECREASE'
     }
 }
-export const RESET = () => {
+export const reset = () => {
     return {
         type: 'RESET'
     }

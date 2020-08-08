@@ -6,7 +6,7 @@ class CounterGroup extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            groupSize: 0,
+            groupSize: this.props.groupSize,
             counters: 0,
             counterInfo: new Array(0).fill(0)
         }
@@ -15,10 +15,9 @@ class CounterGroup extends React.Component {
 
 
     onChangeHandle = (event) => {
-        let times = event.target.value
         this.setState({
-            groupSize: parseInt(times),
-            counterInfo: new Array(parseInt(times)).fill(0),
+            groupSize: parseInt(event.target.value),
+            counterInfo: new Array(parseInt(event.target.value)).fill(0),
             counters:0
         });
     }
@@ -42,7 +41,7 @@ class CounterGroup extends React.Component {
     render() {
         return (<div>
             <label>numbers of counters:</label>
-            <input type="number" value={this.state.groupSize} onChange={this.onChangeHandle}/>
+            <input type="number" value={this.props.groupSize} onChange={this.onChangeHandle}/>
             <label>total:{this.state.counters}</label>
             <div>{this.state.counterInfo.map((value, id) => <Counter groupSize={this.state.groupSize}  key={id} handleChange={(value) => {
                 this.handleChange(value, id)

@@ -4,3 +4,18 @@ export const changeGroupSize = (groupSize) => {
         groupSize: groupSize
     }
 }
+export const increase = () => {
+    return {
+        type: 'INCREASE'
+    }
+}
+export const decrease = () => {
+    return {
+        type: 'DECREASE'
+    }
+}
+export const RESET = () => {
+    return {
+        type: 'RESET'
+    }
+}

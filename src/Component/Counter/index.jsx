@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class Counter extends React.Component {
 
     constructor(props) {
@@ -25,8 +26,6 @@ class Counter extends React.Component {
     //         number: props.value
     //     })
     // }
-
-
 
 
     increase = () => {

@@ -8,11 +8,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    updateTotal: (type) => {
-        dispatch({
-            type: type
-        })
-    },
     changeGroupSize: (groupSize) => {
         dispatch(changeGroupSize(groupSize))
     }
